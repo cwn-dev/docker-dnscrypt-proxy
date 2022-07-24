@@ -1,0 +1,13 @@
+services:
+    dnscrypt-proxy:
+        image: cwndev/dnscrypt-proxy:latest
+        container_name: dnscrypt-proxy
+        restart: always
+        environment:
+            - TZ=Europe/London
+        volumes:
+            - ./dnscryptproxydata/config:/config
+        ports:
+            - "0.0.0.0:53531:5353/tcp"
+            - "0.0.0.0:53531:5353/udp"
+        network_mode: "host"
